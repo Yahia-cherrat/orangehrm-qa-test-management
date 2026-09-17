@@ -1,0 +1,89 @@
+Compaign,Suite,ID test,Test type,Precondition,N° of steps,Steps,Expected result,Final result,statut
+OrangeHRM,TS1 - Authentication,TC1,functional - positive,A valid user account exists,1,Open the OrangeHRM login page,The Login page is displayed,Login page displayed successfully,PASS
+,,,,,2,Enter a valid username,The username is accepted in the Username field,Username entered and accepted successfully,PASS
+,,,,,3,Enter a valid password,The password is masked and accepted in the Password field,Password entered successfully and masked correctly,PASS
+,,,,,4,"Click the ""Login"" button",The user is authenticated and redirected to the Dashboard,User authenticated successfully and redirected to the Dashboard,PASS
+,,TC2,functional - negative,A valid username is known,1,Open the OrangeHRM login page,The Login page is displayed,Login page displayed successfully,PASS
+,,,,,2,Enter a valid username,The username is accepted,Username entered and accepted successfully,PASS
+,,,,,3,Enter an invalid password,The password is accepted in masked form,Password entered successfully and masked correctly,PASS
+,,,,,4,"Click the ""Login"" button",Authentication is refused and an invalid credentials message is displayed,"Authentication was refused and the ""Invalid credentials"" message was displayed",PASS
+,,TC3,functional - negative,Login page is open,1,Leave Username and Password empty,Both fields remain empty,Both fields remained empty,PASS
+,,,,,2,"Click the ""Login"" button",Required-field validation messages are displayed and the user stays on the Login page,Required-field validation messages were displayed and the user remained on the Login page,PASS
+,,TC4,functional - positive,The user is already logged in,1,Open the user profile menu in the top-right corner,The profile menu is displayed,The profile menu was displayed successfully,PASS
+,,,,,2,"Click ""Logout""",The current session is closed,The current session was closed successfully,PASS
+,,,,,3,Observe the page after logout,The user is redirected to the Login page,The user was redirected to the Login page successfully,PASS
+,TS2 - PIM,TC5,functional - positive,The user is logged in as an administrator,1,"Open the ""PIM"" module",The Employee List page is displayed,Employee List page displayed successfully,PASS
+,,,,,2,"Click ""Add Employee""",The Add Employee form is displayed,Add Employee form displayed successfully,PASS
+,,,,,3,Enter a valid First Name and Last Name,The mandatory name fields accept the values,First Name and Last Name values were accepted successfully,PASS
+,,,,,4,Keep or enter a unique Employee ID,The Employee ID is accepted,Employee ID was accepted successfully,PASS
+,,,,,5,"Click ""Save""",The employee is created and the employee details page is displayed,Employee was created successfully and the Employee Details page was displayed,PASS
+,,TC6,functional - negative,The user is logged in as an administrator The Add Employee form is open,1,Leave the First Name empty,The First Name field remains empty,The First Name field remained empty,PASS
+,,,,,2,Enter a valid Last Name,The Last Name is accepted,The Last Name was accepted,PASS
+,,,,,3,"Click ""Save""",The employee is not created and a required-field validation message is displayed for First Name,The employee was not created and the required-field validation message was displayed for First Name,PASS
+,,TC7,functional - positive,The user is logged in At least one employee exists,1,"Open ""PIM"" > ""Employee List""",The Employee List search page is displayed,The Employee List search page was displayed successfully,PASS
+,,,,,2,Enter an existing employee name or Employee ID,The search criterion is accepted,The search criterion was accepted successfully,PASS
+,,,,,3,"Click ""Search""",Matching employee records are displayed,Matching employee records were displayed correctly,PASS
+,,,,,4,Open a matching employee,The employee profile/details page is displayed,The employee profile/details page was displayed successfully,PASS
+,,TC8,functional - positive,The user is logged in as an administrator An employee record exists,1,Open an existing employee profile from PIM,The employee profile is displayed,The employee profile was displayed successfully,PASS
+,,,,,2,Open Personal Details,Editable personal information is displayed,Editable personal information was displayed correctly,PASS
+,,,,,3,"Change a non-critical editable field, eg Other ID or Nickname",The new value is accepted,The new value was accepted successfully,PASS
+,,,,,4,"Click ""Save""",A success notification is displayed,A success notification was displayed,PASS
+,,,,,5,Refresh or reopen the employee profile,The modified value remains saved, The modified value remains saved successfully,PASS
+,TS3 - Leave,TC9,functional - positive,The user is logged in Leave module access is available,1,"Open the ""Leave"" module",The Leave module is displayed,The Leave module was displayed successfully,PASS
+,,,,,2,"Open ""Leave List""",The Leave List search/filter page is displayed,The Leave List search/filter page was displayed correctly,PASS
+,,,,,3,Select one available leave status filter,The selected status is shown in the filter,The selected status was displayed correctly in the filter,PASS
+,,,,,4,"Click ""Search""","Only leave requests matching the selected criteria are displayed, or an empty result is shown if none exist",Only leave requests matching the selected criteria were displayed,PASS
+,,TC10,functional - positive,The user is logged in as an employee with leave entitlement An eligible leave type exists,1,"Open ""Leave"" > ""Apply""",The Apply Leave page is displayed,The Apply Leave page was displayed successfully,PASS
+,,,,,2,Select an eligible Leave Type,The selected Leave Type is accepted,The selected Leave Type was accepted successfully,PASS
+,,,,,3,Select valid From and To dates,The selected dates are accepted,The selected dates were accepted successfully,PASS
+,,,,,4,Select a valid duration if requested,The duration is accepted,The duration was accepted successfully,PASS
+,,,,,5,"Click ""Apply""",The leave request is submitted and a confirmation/success message is displayed,The leave request was not submitted and no confirmation/success message was displayed,FAIL
+,,TC11,functional - negative,The user is logged in and can access the Apply Leave page,1,"Open ""Leave"" > ""Apply""",The Apply Leave page is displayed,The Apply Leave page was displayed successfully,PASS
+,,,,,2,Leave mandatory leave information empty,Mandatory fields remain empty,Mandatory fields remained empty,PASS
+,,,,,3,"Click ""Apply""",The request is not submitted and validation messages are displayed for required fields,The request was not submitted and validation messages were displayed for all required fields,PASS
+,,TC12,functional - positive,The user is logged in At least one leave request exists for the user,1,"Open ""Leave"" > ""My Leave""",The user's leave requests are displayed,The user's leave requests were displayed successfully,PASS
+,,,,,2,Use available filters to locate an existing leave request,The matching request is displayed,The matching request was displayed correctly,PASS
+,,,,,3,Open or inspect the leave request,The leave request details/status are visible,The leave request details and status were visible,PASS
+,,,,,4,Verify its displayed status and dates,The status and dates match the selected request,The status and dates matched the selected request,PASS
+,TS4 - Recruitment,TC13,functional - positive,The user is logged in as an administrator Recruitment module access is available,1,"Open the ""Recruitment"" module",The Candidates page is displayed,The Candidates page was displayed successfully,PASS
+,,,,,2,"Click ""Add""",The Add Candidate form is displayed,The Add Candidate form was displayed successfully,PASS
+,,,,,3,Enter valid mandatory candidate information,The fields accept the entered values,The entered values were accepted successfully,PASS
+,,,,,4,Enter a unique valid email address,The email address is accepted,The email address was accepted successfully,PASS
+,,,,,5,"Click ""Save""",The candidate is created and the candidate profile/application page is displayed,The candidate was created successfully and the candidate application page was displayed,PASS
+,,TC14,functional - negative,The user is logged in The Add Candidate form is open,1,Leave a mandatory candidate field empty,The mandatory field remains empty,The mandatory field remained empty,PASS
+,,,,,2,Fill the other required fields with valid data,The other values are accepted,The other values were accepted successfully,PASS
+,,,,,3,"Click ""Save""",The candidate is not created and a required-field validation message is displayed,"The candidate was not created, and the required-field validation message was displayed",PASS
+,,TC15,functional - positive,The user is logged in At least one candidate exists,1,"Open ""Recruitment"" > ""Candidates""",The Candidates search page is displayed,The Candidates search page was displayed successfully,PASS
+,,,,,2,Enter a candidate name and/or select an available filter,The search criteria are accepted,The search criteria were accepted successfully,PASS
+,,,,,3,"Click ""Search""",Matching candidate records are displayed,Matching candidate records were displayed correctly,PASS
+,,,,,4,Open a matching candidate,"The candidate profile details are displayed after clicking the ""eye"" icon",Successfully displayed,PASS
+,,TC16,functional - positive,The user is logged in At least one recruitment vacancy exists,1,"Open ""Recruitment"" > ""Vacancies""",The Vacancies page is displayed,Vacancies page displayed successfully,PASS
+,,,,,2,Select or enter an available vacancy search criterion,The filter criterion is accepted,Filter criterion accepted successfully,PASS
+,,,,,3,"Click ""Search""",Matching vacancies are displayed,Matching vacancies displayed correctly,PASS
+,,,,,4,Open a vacancy from the result list,The vacancy details page is displayed,Vacancy details page displayed successfully,PASS
+,TS5 - Admin / User Management,TC17,functional - positive,The user is logged in as an administrator An employee exists without a user account,1,Open the Admin / User Management section,The user management page is displayed,The User Management page was displayed successfully,PASS
+,,,,,2,"Click ""Add"" to create a new user",The Add User form is displayed,The Add User form was displayed successfully,PASS
+,,,,,3,Select an employee and enter a unique username,The employee and username values are accepted,The employee and username values were accepted successfully,PASS
+,,,,,4,Select a role/status and enter a valid password and confirmation,"The role, status, password and confirmation are accepted","The role, status, password, and confirmation values were accepted successfully",PASS
+,,,,,5,"Click ""Save""",The new user account is created and appears in the users list,The new user account was created successfully and appeared in the users list,PASS
+,,TC18,functional - positive,The user is logged in as an administrator At least one user account exists,1,Open the Admin / User Management users list,The users list is displayed,The users list was displayed successfully,PASS
+,,,,,2,Enter an existing username or employee name in the filter,The filter criterion is accepted,The filter criterion was accepted successfully,PASS
+,,,,,3,"Click ""Search""",Matching user accounts are displayed,Matching user accounts were displayed,PASS
+,,,,,4,Verify the returned user,The displayed username/employee matches the search criterion,The displayed username/employee matched the search criterion,PASS
+,,TC19,functional - negative,The user is logged in as an administrator The Add User form is open,1,Leave one or more mandatory fields empty,The mandatory fields remain empty,The mandatory fields remained empty,PASS
+,,,,,2,Fill the remaining fields with valid data,The valid values are accepted,The valid values were accepted successfully,PASS
+,,,,,3,"Click ""Save""",The user account is not created and validation messages are displayed for the required fields,"The user account was not created, and validation messages were displayed for the required fields",PASS
+,TS6 - Non-functional Tests,TC20,non-functional - performance,Stable internet connection Browser cache cleared Acceptance target for this exercise: login page load ≤ 3 seconds,1,Open browser Developer Tools and select the Network tab,The Network panel is ready to capture requests,The Network panel opened successfully and was ready to capture requests,PASS
+,,,,,2,Navigate to the OrangeHRM login page,The login page starts loading and requests are captured,The login page loaded successfully and all network requests were captured,PASS
+,,,,,3,Record the page load time,The measured load time is available,The page load time was successfully measured [194 ms],PASS
+,,,,,4,Repeat the page load 3 times,The login page loads completely within the defined acceptance target (≤ 3 seconds for this exercise) without failed essential requests,"The login page loaded completely in [194 ms], within the 3-second target, with no failed essential requests",PASS
+,,TC21,non-functional - compatibility,"Latest available versions of Chrome, Brave and Edge are installed A valid OrangeHRM account is available",1,Open the OrangeHRM login page in Google Chrome,The page is displayed correctly,The OrangeHRM login page was displayed correctly in Chrome with no visual issues,PASS
+,,,,,2,Log in with valid credentials and verify the Dashboard,Login succeeds and the Dashboard is usable,Login was successful and the Dashboard loaded correctly with all main elements accessible,PASS
+,,,,,3,Repeat the same test in Brave,The same core functionality works without blocking display issues,The same core functionality worked correctly in Brave without any blocking display or usability issues,PASS
+,,,,,4,Repeat the same test in Microsoft Edge,"Core login and Dashboard behavior remains consistent across Chrome, Brave and Edge","Login and Dashboard behavior was consistent across Edge, with no significant functional or display differences observed",PASS
+,,TC22,non-functional - security,Login page is open,1,Click the Password field,The Password field receives focus,The Password field received focus,PASS
+,,,,,2,Enter a password value,Characters are entered into the Password field,Characters were successfully entered into the Password field,PASS
+,,,,,3,Observe the displayed password characters,Password characters are masked and are not exposed as readable clear text,The password characters were masked and were not displayed in clear text,PASS
+,,TC23,non-functional - security/session,The user is logged in to OrangeHRM,1,Open the user menu and click Logout,The user is redirected to the Login page,The user was redirected to the Login page,PASS
+,,,,,2,Use the browser Back button,The application must not restore an authenticated session,The authenticated session was restored,FAIL
+,,,,,3,Try to access a previously authenticated OrangeHRM page,"After logout, authenticated pages cannot be accessed using the previous session",Authenticated pages could be accessed using the previous session,FAIL
